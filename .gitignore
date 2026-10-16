@@ -38,3 +38,6 @@ Desktop.ini
 
 # Runtime logs
 *.log
+
+# Generated local vector databases
+/db/
