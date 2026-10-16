@@ -1,9 +1,7 @@
 """Load, chunk, and store local text documents for the RAG ingestion pipeline."""
 
-from pathlib import Path
 import shutil
-
-from dotenv import load_dotenv
+from pathlib import Path
 
 # Chroma stores document chunks and their embedding vectors on disk.
 from langchain_chroma import Chroma
@@ -16,13 +14,7 @@ from langchain_openai import OpenAIEmbeddings
 # This splitter tries paragraph and line boundaries before splitting finer text.
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-
-# Resolve paths from this file so the script works from any terminal directory.
-MAIN_FOLDER = Path(__file__).resolve().parent
-DOCS_FOLDER = MAIN_FOLDER / "docs"
-
-# Load local API keys without replacing variables already set in the environment.
-load_dotenv(MAIN_FOLDER / ".env")
+from rag_sample.config import DOCS_FOLDER, MAIN_FOLDER
 
 
 def load_documents(docs_folder: Path = DOCS_FOLDER) -> list[Document]:
